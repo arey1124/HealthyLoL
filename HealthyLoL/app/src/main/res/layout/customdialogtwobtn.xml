@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/customdia_text"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:text="hello"
+        />
+    <Button
+        android:id="@+id/custdia_btnfirst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/customdia_text"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/custdia_btnsec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/custdia_btnfirst"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

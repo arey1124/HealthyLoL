@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "610247044664",
+    "firebase_url": "https://healthylol-323aa.firebaseio.com",
+    "project_id": "healthylol-323aa",
+    "storage_bucket": "healthylol-323aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610247044664:android:823e85ce2eaa919f",
+        "android_client_info": {
+          "package_name": "com.at.healthylol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610247044664-2gaetstf5pchfo23oqmjd3ccd4nqfuvu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBY-HeLPZcS9xPtv6RAHHk6XNcRRC0MFa8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610247044664-2gaetstf5pchfo23oqmjd3ccd4nqfuvu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

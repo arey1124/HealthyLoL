@@ -1,6 +1,7 @@
 package com.at.healthylol;
 
 import android.content.Intent;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ public class Dashboard extends AppCompatActivity {
             }
         };
 
+
         contactsDoc=(RelativeLayout)findViewById(R.id.contactdoc);
         Diary=(RelativeLayout)findViewById(R.id.diary);
         genReport=(RelativeLayout)findViewById(R.id.report);
@@ -42,7 +44,7 @@ public class Dashboard extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("User",null).commit();
             mAuth.signOut();
             }
         });

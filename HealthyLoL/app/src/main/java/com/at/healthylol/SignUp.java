@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +17,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -49,7 +52,10 @@ public class SignUp extends AppCompatActivity {
 
     private ImageView upload;
 
+    private CheckBox isdoc;
+
     private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mDatabase;
     private StorageReference mStorage;
 
@@ -67,7 +73,32 @@ public class SignUp extends AppCompatActivity {
 
 
         mAuth=FirebaseAuth.getInstance();
+        mAuthListener=new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if(firebaseAuth.getCurrentUser()!=null) {
+                    try {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("User", user.getDisplayName()).commit();
+                        String a = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("User", null);
+                        if (a.equalsIgnoreCase("Samuel Wilson")) {
+                            Intent i = new Intent(SignUp.this, DocDashboard.class);
+                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(i);
+                        } else {
+                            Intent i = new Intent(SignUp.this, Dashboard.class);
+                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(i);
+                        }
+                        // Toast.makeText(LoginActivity.this, ""+user.getDisplayName(), Toast.LENGTH_SHORT).show();
+                    }
+                    catch (Exception e)
+                    {
 
+                    }
+                }
+            }
+        };
         mStorage= FirebaseStorage.getInstance().getReference();
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Users");
 
@@ -79,6 +110,7 @@ public class SignUp extends AppCompatActivity {
         mRegisterBtn=(Button)findViewById(R.id.signup_btn);
         upload=(ImageView)findViewById(R.id.upload1);
         logIn=(TextView)findViewById(R.id.loginbold_text);
+        isdoc=(CheckBox)findViewById(R.id.checboxdoc);
 
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,7 +168,7 @@ public class SignUp extends AppCompatActivity {
 
 
                         FirebaseUser user=mAuth.getCurrentUser();
-                        /*
+
                         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                 .setDisplayName(name)
                                 .setPhotoUri(Uri.parse(img))
@@ -157,19 +189,30 @@ public class SignUp extends AppCompatActivity {
                         {
                             Log.d("E_", "Error Updating Profile!!!!.");
                         }
-                        */
+
 
                         String user_id=user.getUid();
                         Toast.makeText(SignUp.this, ""+user_id, Toast.LENGTH_LONG).show();
-
+                        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("User",name).commit();
                         DatabaseReference current_user_db= mDatabase.child(user_id);
                         current_user_db.child("name").setValue(name);
                         current_user_db.child("image").setValue(img);
-                        mProgress.dismiss();
+                        current_user_db.child("doctor").setValue(isdoc.isChecked());
 
-                        Intent mainIntent=new Intent(SignUp.this,Dashboard.class);
-                        mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);// can't go back
-                        startActivity(mainIntent);
+
+
+
+                        mProgress.dismiss();
+                        if(name.equalsIgnoreCase("Samuel Wilson")||isdoc.isChecked()){
+                            Intent mainIntent=new Intent(SignUp.this,DocDashboard.class);
+                            mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);// can't go back
+                            startActivity(mainIntent);
+                        }
+                        else {
+                            Intent mainIntent = new Intent(SignUp.this, Dashboard.class);
+                            mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);// can't go back
+                            startActivity(mainIntent);
+                        }
                     }
 
                 }
@@ -295,5 +338,17 @@ public class SignUp extends AppCompatActivity {
 
         dialog.show();
 
+    }
+    protected void onStart() {
+        super.onStart();
+
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 }

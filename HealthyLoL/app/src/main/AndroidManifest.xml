@@ -22,8 +22,11 @@
             android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
         <activity android:name=".LoginActivity" />
         <activity android:name=".Dashboard" />
-        <activity android:name=".BlogActivity"></activity>
-        <activity android:name=".PostActivity"></activity>
+        <activity android:name=".BlogActivity" />
+        <activity android:name=".PostActivity" />
+        <activity android:name=".DocDashboard" />
+        <activity android:name=".PatientPsychology" />
+        <activity android:name=".DisplayPercentage"></activity>
     </application>
 
 </manifest>

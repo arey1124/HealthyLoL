@@ -4,6 +4,7 @@ package com.at.healthylol;
         import android.content.Context;
         import android.content.Intent;
         import android.media.Image;
+        import android.preference.PreferenceManager;
         import android.support.annotation.NonNull;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
@@ -125,7 +126,7 @@ public class BlogActivity extends AppCompatActivity {
         }
         if(item.getItemId()==R.id.action_logout)
         {
-
+            PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("User",null).commit();
             signout();
         }
 

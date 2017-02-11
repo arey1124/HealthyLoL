@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_doc_dashboard"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#d13d4d"
+    tools:context="com.at.healthylol.DocDashboard">
+
+    <RelativeLayout
+        android:layout_marginBottom="20dp"
+        android:id="@+id/docdetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/profpic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/profile"/>
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/profpic"
+            android:text="Samuel Wilson"
+            android:textColor="#fff"
+            android:layout_centerInParent="true"
+            android:padding="20dp"/>
+        <TextView
+            android:id="@+id/age"
+            android:layout_below="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="28 years"
+            android:layout_toRightOf="@+id/profpic"
+            android:paddingTop="20dp"
+            android:paddingLeft="20dp"
+            android:textColor="#fff"
+            />
+        <TextView
+            android:id="@+id/qualification"
+            android:layout_below="@+id/age"
+            android:layout_toRightOf="@id/profpic"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:text="MBBS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+
+    <android.support.v7.widget.CardView
+        android:layout_below="@+id/docdetails"
+        android:layout_width="match_parent"
+        android:id="@+id/medicationcard"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#d1064587"
+            >
+            <ImageView
+                android:id="@+id/medicinepic"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/man"
+                android:padding="10dp"
+                android:layout_centerHorizontal="true"
+                />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/medicinepic"
+                android:background="#fff">
+                <TextView
+                    android:id="@+id/medname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Anirudh Trigunayat"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="5dp"
+                    android:textStyle="bold"
+                    android:textSize="20dp"/>
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:id="@+id/medicationcard1"
+        android:layout_below="@+id/medicationcard"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#d1064587"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/medicinepic1"
+                android:background="#eaeef1">
+
+                <TextView
+                    android:id="@+id/medname1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Arihant Dugar"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:padding="10dp"
+                android:id="@+id/medicinepic1"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/man1"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+
+</RelativeLayout>

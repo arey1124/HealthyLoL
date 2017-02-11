@@ -47,28 +47,10 @@
         android:padding="10dp"
         android:background="#fff"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="0dp"
+        android:layout_marginLeft="1dp"
         android:layout_marginRight="5dp"
         android:layout_above="@+id/password"
         android:layout_alignStart="@+id/name" />
-
-    <EditText
-        android:id="@+id/password"
-        android:padding="10dp"
-        android:layout_above="@+id/signup_btnrl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        android:background="#fff"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        />
-
-
-
-
-
 
 
     <RelativeLayout
@@ -155,6 +137,29 @@
 
     </RelativeLayout>
 
+    <EditText
+        android:id="@+id/password"
+        android:padding="10dp"
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:background="#fff"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="5dp"
+        android:layout_above="@+id/checboxdoc"
+        android:layout_alignStart="@+id/email" />
+
+    <CheckBox
+        android:id="@+id/checboxdoc"
+        android:layout_above="@+id/signup_btnrl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up as a Doctor"
+        android:textColor="#fff"
+        android:layout_centerHorizontal="true"
+        android:checked="false"/>
 
 
 </RelativeLayout>
